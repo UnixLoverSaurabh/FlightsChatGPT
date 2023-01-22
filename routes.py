@@ -60,7 +60,7 @@ def receive_messages():
 
             with ThreadPoolExecutor(max_workers=2) as executor:
                 future1 = executor.submit(mmtBot.ask, incoming_msg, session_chat_log)
-                future2 = executor.submit(mmtBot.searchCriteriaCollection, incoming_msg, session2_chat_log, session.get(constants.SESSION2_STATUS, False))
+                future2 = executor.submit(mmtBot.searchCriteriaCollection, incoming_msg, session2_chat_log)
 
                 # Wait for all threads to complete
                 executor.shutdown(wait=True)
@@ -73,15 +73,10 @@ def receive_messages():
             session[constants.SESSION1_CHAT_LOG_KEY] = mmtBot.append_interaction_to_chat_log(incoming_msg, answer, session_chat_log)
             session[constants.SESSION2_CHAT_LOG_KEY] = mmtBot.append_interaction_to_chat_log(incoming_msg, answer2, session2_chat_log)
 
-            tempAns = searchCriteria.isSearchCriteriaSatisfied(answer2)
-            session[constants.SESSION2_STATUS] = tempAns
-            if tempAns:
-                # resetting the session for model 2
-                # session[constants.SESSION2_CHAT_LOG_KEY] = constants.SESSION2_CHAT_LOG_VALUE
-
+            readyForHttpCall = searchCriteria.isSearchCriteriaSatisfied(answer2)
+            if readyForHttpCall:
                 flights_search_data, flights_count = getMMTSearchResponse(answer2)
                 redis_client.lpush('messages', f'{flights_search_data}\n This data is for total {flights_count} flights present on date {answer2.get(constants.DEPARTURE_DATE)} from {answer2.get(constants.SOURCE)} to {answer2.get(constants.DESTINATION)}')
-                # yield 'data: %s\n\n' % answer2
             else:
                 yield 'data: %s\n\n' % answer
 

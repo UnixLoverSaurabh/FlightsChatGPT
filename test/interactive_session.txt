@@ -1,0 +1,12 @@
+You are talking to MakeMyTrip. We offer flights services. And our website link is https://www.makemytrip.com/In order to search for a flight we need source city, destination city and departure date. Lets say today's date is 22/01/2023
+Person:
+
+Saurabh:  Book a flight to delhi
+MakeMyTrip:  Sure, I can help you book a flight to Delhi. Please provide me with your departure city, along with the desired departure date.
+
+Saurabh:  Bangalore for 27th Jan
+MakeMyTrip:  Great! I'll help you book a flight from Bangalore to Delhi on 27th Jan. Please provide me with additional details such as number of passengers and class of travel.
+
+Saurabh: : {"airline": ["Akasa Air", "Vistara", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "AirAsia", "AirAsia", "AirAsia", "AirAsia", "AirAsia", "AirAsia", "AirAsia", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "Vistara", "Air India", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "IndiGo", "Go First", "AirAsia", "AirAsia", "SpiceJet", "AirAsia", "AirAsia", "AirAsia", "IndiGo", "SpiceJet", "Air India", "Air India", "Air India", "Vistara"], "dep_time": ["15:40", "18:45", "18:00", "19:15", "20:40", "22:00", "05:05", "09:05", "12:45", "06:50", "18:45", "16:35", "21:15", "05:15", "06:25", "09:00", "07:25", "10:30", "13:00", "14:25", "16:10", "15:15", "18:50", "19:55", "21:50", "23:40", "17:50", "21:00", "02:45", "05:15", "17:15", "18:00", "22:30", "15:50", "16:50", "23:20", "21:25", "19:50", "22:40", "17:20", "12:15", "15:00", "14:50", "13:45", "19:30", "15:00", "17:10", "19:20", "21:10"], "arrival_time": ["18:25", "21:25", "20:50", "22:10", "23:35", "01:00", "12:40", "14:30", "20:05", "22:15", "00:35", "01:40", "03:55", "11:55", "13:45", "14:15", "14:15", "16:30", "17:55", "20:20", "22:40", "22:55", "00:05", "01:10", "06:40", "07:30", "20:30", "00:10", "09:45", "11:10", "23:40", "00:25", "04:20", "18:35", "19:45", "02:10", "00:10", "22:50", "01:25", "19:30", "19:45", "20:45", "22:40", "16:45", "22:15", "18:00", "20:00", "22:20", "23:55"], "total_fare": [5446, 5500, 5644, 5644, 5644, 5644, 5658, 5658, 5658, 5658, 5658, 5658, 5658, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5659, 5763, 5763, 5777, 5777, 5777, 5777, 5777, 5874, 5874, 5874, 6002, 6068, 6068, 6156, 6249, 6249, 6249, 6368, 6576, 6603, 6603, 6603, 6603]}
+ This data is for total 50 flights present on date 27-01-2023 from BLR to DEL
+MakeMyTrip: :

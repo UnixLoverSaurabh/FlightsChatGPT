@@ -1,4 +1,3 @@
-import json
 from datetime import date
 from datetime import timedelta
 from common.utils import constants
@@ -25,6 +24,12 @@ def isStringEmpty(value: str) -> bool:
 
 
 def isSearchCriteriaSatisfied(response: dict) -> bool:
-    if not isStringEmpty(response.get(constants.SOURCE)) and not isStringEmpty(response.get(constants.DESTINATION)) and not isStringEmpty(response.get(constants.DEPARTURE_DATE)):
+    source = response.get(constants.SOURCE)
+    destination = response.get(constants.DESTINATION)
+    departure_date = response.get(constants.DEPARTURE_DATE)
+
+    searchParameter = f'{source}-{destination}-{departure_date}'
+    if not isStringEmpty(source) and not isStringEmpty(destination) and not isStringEmpty(departure_date) and searchParameter != constants.SEARCH_PARAMETER:
+        constants.SEARCH_PARAMETER = searchParameter
         return True
     return False

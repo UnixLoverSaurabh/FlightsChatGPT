@@ -4,17 +4,16 @@ from common.utils import constants
 import json
 from aiohttp import ClientSession
 
+from common.utils.coloredPrint import bcolors
+
 openai.aiosession.set(ClientSession())
 
 openai.api_key = os.getenv("CHATGPT_API_KEY")
 
 
-def searchCriteriaCollection(question, chat_log=constants.SESSION2_CHAT_LOG_VALUE, session_status=False) -> dict:
+def searchCriteriaCollection(question, chat_log=constants.SESSION2_CHAT_LOG_VALUE) -> dict:
 
-    ans = {"source": "", "destination": "", "departure_date": ""}
-
-    if session_status:
-        return ans
+    ans = {constants.SOURCE: constants.Empty_string, constants.DESTINATION: constants.Empty_string, constants.DEPARTURE_DATE: constants.Empty_string}
 
     prompt_text = f'{chat_log}{constants.restart_sequence}: {question}{constants.start_sequence}:'
     response = openai.Completion.create(
@@ -27,7 +26,7 @@ def searchCriteriaCollection(question, chat_log=constants.SESSION2_CHAT_LOG_VALU
         presence_penalty=0
     )
     command = response['choices'][0]['text']
-
+    print(f'{bcolors.OKGREEN}question: {question}\t answer: {str(command)}{bcolors.ENDC}')
     try:
         ans = json.loads(command.replace("'", '"'))
     except Exception as ex:
@@ -40,15 +39,15 @@ def ask(question, chat_log=constants.SESSION1_CHAT_LOG_VALUE):
     response = openai.Completion.create(
       model="text-davinci-003",
       prompt=prompt_text,
-      temperature=0.8,
+      temperature=0.9,
       max_tokens=150,
       top_p=1,
       frequency_penalty=0,
-      presence_penalty=0.3,
-      stop=["\n"],
+      presence_penalty=0.6,
+      stop=[constants.restart_sequence, constants.start_sequence],
     )
     story = response['choices'][0]['text']
-    print(f'question: {question}\t answer: {str(story)}')
+    print(f'{bcolors.OKBLUE}question: {question}\t answer: {story}{bcolors.ENDC}')
     return str(story)
 
 

@@ -15,10 +15,10 @@ SESSION1_CHAT_LOG_KEY = "chat_log1"
 
 SESSION2_CHAT_LOG_VALUE = f"""{restart_sequence}Book a flight to Goa{start_sequence}{{"{SOURCE}":"", "{DESTINATION}":"GOI", "{DEPARTURE_DATE}":""}}{restart_sequence}my source is Delhi and departure date is tomorrow{start_sequence}{{"{SOURCE}":"DEL", "{DESTINATION}":"GOI", "{DEPARTURE_DATE}":"{getFormattedDateForNthDay(1)}"}}{restart_sequence}flight to BLR for tomorrow{start_sequence}{{"{SOURCE}":"", "{DESTINATION}":"BLR", "{DEPARTURE_DATE}":"{getFormattedDateForNthDay(1)}"}}{restart_sequence}source is DXB{start_sequence}{{"{SOURCE}":"DXB", "{DESTINATION}":"GOI", "{DEPARTURE_DATE}":"{getFormattedDateForNthDay(1)}"}}{restart_sequence}i want to go to London next week{start_sequence}{{"{SOURCE}":"", "{DESTINATION}":"LON", "{DEPARTURE_DATE}":"{getFormattedDateForNthDay(7)}"}}{restart_sequence}from delhi{start_sequence}{{"{SOURCE}":"DEL", "{DESTINATION}":"LON", "{DEPARTURE_DATE}":"{getFormattedDateForNthDay(7)}"}}"""
 SESSION2_CHAT_LOG_KEY = "chat_log2"
-SESSION2_STATUS = "session2Status"
-
 
 COLUMN_AIRLINE = "airline"
 COLUMN_DEP_TIME = "dep_time"
 COLUMN_ARRIVAL_TIME = "arrival_time"
 COLUMN_TOTAL_FARE = "total_fare"
+
+SEARCH_PARAMETER = Empty_string
