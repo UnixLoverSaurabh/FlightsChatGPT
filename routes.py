@@ -4,9 +4,10 @@ from common.utils import searchCriteria
 import mmtBot
 from flask import Flask, request, session, render_template, jsonify, Response, stream_with_context
 from concurrent.futures.thread import ThreadPoolExecutor
+
+from common.utils.htmlDesign import convertStringToBulleted
 from redisServer import redis_client, get_next_message
 from requestAdapter.search import getMMTSearchResponse
-import asyncio
 
 app = Flask(__name__)
 # if for some reason your conversation with the bot gets weird, change the secret key
@@ -78,6 +79,6 @@ def receive_messages():
                 flights_search_data, flights_count = getMMTSearchResponse(answer2)
                 redis_client.lpush('messages', f'{flights_search_data}\n This data is for total {flights_count} flights present on date {answer2.get(constants.DEPARTURE_DATE)} from {answer2.get(constants.SOURCE)} to {answer2.get(constants.DESTINATION)}')
             else:
-                yield 'data: %s\n\n' % answer
+                yield 'data: %s\n\n' % convertStringToBulleted(answer)
 
     return Response(event_stream(), mimetype='text/event-stream')
